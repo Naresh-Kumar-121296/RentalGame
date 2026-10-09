@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { @apply bg-surface text-ink font-sans antialiased; }
+:focus-visible { outline: 2px solid #8A3FD4; outline-offset: 2px; }
+
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+.skeleton {
+  background: linear-gradient(90deg, #eeeef4 25%, #f6f6fa 37%, #eeeef4 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 60s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
+.grad-text { background: linear-gradient(90deg, #1A3FE0 0%, #2F6FD0 50%, #7CC400 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
